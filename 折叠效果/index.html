@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>折叠效果</title>
+    <style>
+      #clickOpen {
+        display: inline-block;
+        padding: 5px 20px;
+        background-color: #e3e3e3;
+        cursor: pointer;
+      }
+      .list {
+        display: inline-block;
+        background-color: #e3e3e3;
+        list-style: none;
+        padding: 5px 12px;
+        text-align: center;
+        display: none;
+        margin-top: 2px;
+        color: #13eb0c;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clickOpen">
+      点击展开
+    </div>
+    <br />
+    <ul class="list">
+      <li class="item">收藏的宝贝</li>
+      <li class="item">收藏的店铺</li>
+    </ul>
+  </body>
+  <script>
+    let clickBtn = document.getElementById("clickOpen");
+    let list = document.getElementsByClassName("list")[0];
+    let isOpen = false;
+
+    clickBtn.addEventListener("click", () => {
+      isOpen = !isOpen;
+      if (isOpen) {
+        clickBtn.innerHTML = "点击隐藏";
+        list.style.display = "inline-block";
+      } else {
+        clickBtn.innerHTML = "点击展开";
+        list.style.display = "none";
+      }
+    });
+  </script>
+</html>
