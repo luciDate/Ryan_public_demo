@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .wrap {
+        width: 800px;
+        height: 400px;
+        position: relative;
+      }
+      .list {
+        width: 800px;
+        height: 400px;
+        list-style: none;
+        position: relative;
+        padding-left: 0px;
+      }
+      .item {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        color: white;
+        font-size: 50px;
+        opacity: 0;
+        transition: all 0.5s;
+      }
+      .item:nth-child(1) {
+        background-color: black;
+      }
+      .item:nth-child(2) {
+        background-color: red;
+      }
+      .item:nth-child(3) {
+        background-color: gold;
+      }
+      .item:nth-child(4) {
+        background-color: green;
+      }
+      .item:nth-child(5) {
+        background-color: pink;
+      }
+      .btn {
+        width: 50px;
+        height: 100px;
+        position: absolute;
+        top: 140px;
+        z-index: 100;
+      }
+      #goPre {
+        left: 0px;
+      }
+      #goNext {
+        right: 0px;
+      }
+      .item.active {
+        opacity: 1;
+        z-index: 10;
+      }
+      .pointList {
+        padding-left: 0;
+        list-style: none;
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        z-index: 1000;
+      }
+      .point {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(0, 0, 0, 4);
+        border-radius: 100%;
+        float: left;
+        margin-right: 14px;
+        border-style: solid;
+        border-width: 2px;
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+      .point.active {
+        background-color: rgba(140, 148, 150, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <ul class="list">
+        <li class="item active">0</li>
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+      </ul>
+      <ul class="pointList">
+        <li class="point active" data-index="0"></li>
+        <li class="point"></li>
+        <li class="point"></li>
+        <li class="point"></li>
+        <li class="point"></li>
+      </ul>
+      <button class="btn" id="goPre"><</button>
+      <button class="btn" id="goNext">></button>
+    </div>
+  </body>
+  <script>
+    let items = document.getElementsByClassName("item");
+    let points = document.getElementsByClassName("point");
+    let goPreBtn = document.getElementById("goPre");
+    let goNextBtn = document.getElementById("goNext");
+    let wrap = document.getElementsByClassName("wrap")[0];
+    let time = 0;
+    let index = 0;
+
+    let clearActive = () => {
+      for (let i = 0; i < items.length; i++) {
+        items[i].className = "item";
+      }
+      for (let i = 0; i < points.length; i++) {
+        points[i].className = "point";
+      }
+    };
+
+    let goIndex = () => {
+      clearActive();
+      points[index].className = "point active";
+      items[index].className = "item active";
+    };
+
+    let goNext = () => {
+      if (index < 4) {
+        index++;
+      } else {
+        index = 0;
+      }
+      goIndex();
+    };
+
+    let goPre = () => {
+      if (index == 0) {
+        index = 4;
+      } else {
+        index--;
+      }
+      goIndex();
+    };
+
+    goNextBtn.addEventListener("click", () => goNext());
+    goPreBtn.addEventListener("click", () => goPre());
+
+    for (let i = 0; i < points.length; i++) {
+      points[i].setAttribute("data-index", i);
+    }
+
+    for (let i = 0; i < points.length; i++) {
+      points[i].addEventListener("click", () => {
+        let pointIndex = points[i].getAttribute("data-index");
+        index = pointIndex;
+        goIndex();
+        time = 0;
+      });
+    }
+
+    let intervalFun = () => {
+      time++;
+      if (time == 20) {
+        goNext();
+        time = 0;
+      }
+    };
+
+    let interval = setInterval(intervalFun, 500);
+
+    wrap.onmouseover = () => {
+      clearInterval(interval);
+    };
+    wrap.onmouseout = () => {
+      interval = setInterval(intervalFun, 500);
+    };
+  </script>
+</html>
