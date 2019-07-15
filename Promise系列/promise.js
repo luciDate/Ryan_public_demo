@@ -158,3 +158,4 @@ const preloadImage = function(path) {
     image.src = path;
   });
 };
+
