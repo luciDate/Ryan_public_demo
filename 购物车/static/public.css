@@ -1,3 +1,33 @@
-body {
-  background-color: aqua;
+table {
+  width: 50%;
+  position: relative;
+  margin: 30px auto;
+  border-collapse: collapse;
+  border: 1px solid rgb(133, 122, 122);
+}
+th {
+  background: cornflowerblue;
+  height: 2.5em;
+  border: 1px solid rgb(133, 122, 122);
+}
+td {
+  text-align: center;
+  height: 30px;
+  border: 1px solid rgb(133, 122, 122);
+}
+.num {
+  display: inline-block;
+  width: 20px;
+}
+.shopList {
+  text-align: left;
+}
+.productsNum {
+  color: red;
+}
+.pricest {
+  color: red;
+}
+.pricetal {
+  color: red;
 }

@@ -8,5 +8,101 @@
     <link rel="stylesheet" href="./static/public.css" />
     <script src="./static/public.js"></script>
   </head>
-  <body></body>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>商品名称</th>
+          <th>数量</th>
+          <th>单价</th>
+          <th>小计</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="idNum">1</td>
+          <td>书籍</td>
+          <td>
+            <span>
+              <input type="button" value="-" />
+              <span class="num">0</span>
+              <input type="button" value="+" />
+            </span>
+          </td>
+          <td><span class="unit">66元</span></td>
+          <td><span class="subtal">0</span></td>
+          <td><button class="delete">删除</button></td>
+        </tr>
+        <tr>
+          <td class="idNum">2</td>
+          <td>食品</td>
+          <td>
+            <span>
+              <input type="button" value="-" />
+              <span class="num">0</span>
+              <input type="button" value="+" />
+            </span>
+          </td>
+          <td><span class="unit">100元</span></td>
+          <td><span class="subtal">0</span></td>
+          <td><button class="delete">删除</button></td>
+        </tr>
+        <tr>
+          <td class="idNum">3</td>
+          <td>饰品</td>
+          <td>
+            <span>
+              <input type="button" value="-" />
+              <span class="num">0</span>
+              <input type="button" value="+" />
+            </span>
+          </td>
+          <td><span class="unit">30元</span></td>
+          <td><span class="subtal">0</span></td>
+          <td><button class="delete">删除</button></td>
+        </tr>
+        <tr>
+          <td class="idNum">4</td>
+          <td>饮料</td>
+          <td>
+            <span>
+              <input type="button" value="-" />
+              <span class="num">0</span>
+              <input type="button" value="+" />
+            </span>
+          </td>
+          <td><span class="unit">15元</span></td>
+          <td><span class="subtal">0</span></td>
+          <td><button class="delete">删除</button></td>
+        </tr>
+        <tr>
+          <td class="idNum">4</td>
+          <td>背包</td>
+          <td>
+            <span>
+              <input type="button" value="-" />
+              <span class="num">0</span>
+              <input type="button" value="+" />
+            </span>
+          </td>
+          <td><span class="unit">200元</span></td>
+          <td><span class="subtal">0</span></td>
+          <td><button class="delete">删除</button></td>
+        </tr>
+        <tr>
+          <td colspan="6" class="shopList">
+            <span>
+              &nbsp商品一共<span class="productsNum"> 0 </span>件,共计花费<span
+                class="pricetal"
+              >
+                0 </span
+              >元,其中最贵的商品是<span class="pricest"> 0 </span>元。
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
 </html>
