@@ -106,7 +106,7 @@ window.onload = function() {
       let nums = document.querySelectorAll(".num");
       let res_nums = 0;
       for (let i = 0; i < nums.length; i++) {
-        res_nums += nums[i].innerHTML;
+        res_nums += parseInt(nums[i].innerHTML);
       }
       return res_nums;
     }
@@ -147,10 +147,6 @@ window.onload = function() {
           that.del(this);
         };
       }
-    }
-    test() {
-      let btn = this.btn[0];
-      this.plus(btn);
     }
   }
 
