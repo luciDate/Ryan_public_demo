@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <li v-for="n of evenNumbers">{{ n }}</li>
+      <hr />
+      <li v-for="n of even(arr)">{{ n }}</li>
+    </div>
+  </body>
+  <script>
+    //在计算属性不适用的情况下 (例如，在嵌套 v-for 循环中) 你可以使用一个方法：
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          numbers: [1, 2, 3, 4, 5],
+          arr: [2, 3, 3]
+        };
+      },
+      computed: {
+        evenNumbers() {
+          return this.numbers.filter(function(number) {
+            return number % 2 === 0;
+          });
+        }
+      },
+      methods: {
+        even() {
+          return this.arr.filter(function(number) {
+            return number % 2 !== 0;
+          });
+        }
+      }
+    });
+  </script>
+</html>
