@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item,index of items">{{ index }},{{ item }}</li>
+      </ul>
+      <br />
+      <ul>
+        <li v-for="item,name of obj">{{ name }},{{ item }}</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          items: ["a", "b", "c"],
+          obj: { name: "小明" }
+        };
+      }
+    });
+    // 由于 JavaScript 的限制，Vue 不能检测以下数组的变动：
+    // 当你利用索引直接设置一个数组项时，例如：vm.items[indexOfItem] = newValue
+    // 当你修改数组的长度时，例如：vm.items.length = newLength
+    //app.$set(app.items, [0], "x"); //主动通知实例更新响应式数据
+    //app.items.splice(2); //响应式splice
+    //app.items.push("d");
+    // 还是由于 JavaScript 的限制，Vue 不能检测对象属性的添加或删除
+    //app.$set(app.obj, "age", 27); //主动向实例添加对象属性
+    //主动响应式添加复数属性
+    // app.obj = Object.assign({}, app.obj, {
+    //   age: 27,
+    //   favoriteColor: "Green"
+    // });
+  </script>
+</html>
