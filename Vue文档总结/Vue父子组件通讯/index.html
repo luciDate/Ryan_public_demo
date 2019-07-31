@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="{fontSize:postFontSize + 'em'}">
+        <mySpan
+          v-for="post of posts"
+          :key="post.id"
+          :title="post.title"
+          :content="post.content"
+          :font-size="postFontSize"
+          @enlarge-text="onENlargeText"
+        ></mySpan>
+      </div>
+    </div>
+  </body>
+  <script>
+    Vue.component("Myspan", {
+      template: `
+      <div class="mySpan">
+        <span>{{title}}</span>
+        <span>{{content}}</span>
+        <br />
+        <button @click="$emit('enlarge-text',0.1)">Enlarge text</button>   
+      <hr />
+      </div>
+      `,
+      props: {
+        id: Number,
+        title: String,
+        content: String,
+        fontSize: Number
+      }
+    });
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          posts: [
+            { id: 1, title: "No.1", content: "i am No.1" },
+            { id: 2, title: "NO.2", content: "i am NO.2" }
+          ],
+          postFontSize: 1
+        };
+      },
+      methods: {
+        onENlargeText(enlargeAmount) {
+          this.postFontSize += enlargeAmount;
+        }
+      }
+    });
+  </script>
+</html>
