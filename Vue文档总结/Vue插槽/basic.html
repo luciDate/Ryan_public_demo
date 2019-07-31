@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!-- 如果父组件需要对子组件标签内添加内容，需要在子组件添加slot插槽占位 -->
+    <div id="app"><alert-box>Something bad happened</alert-box></div>
+  </body>
+  <script>
+    Vue.component("alert-box", {
+      template: `
+      <div class="alert-box">
+        <strong>ERROR!</strong>
+        <slot></slot>
+      </div>
+      `
+    });
+    let app = new Vue({
+      el: "#app"
+    });
+  </script>
+</html>
