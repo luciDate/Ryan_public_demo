@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="outeer" @click="outer">
+        <div class="middle" @click="middle">
+          <button @click.stop="inner">
+            .stop会停止子事件向父事件冒泡，而触发到父事件😘
+          </button>
+        </div>
+      </div>
+      <p>{{ message }}</p>
+      <hr />
+      <form action="https://www.baidu.com/">
+        <button type="submit" @click.prevent="example">
+          点击我!并且不触发默认事件❤️
+        </button>
+      </form>
+      <hr />
+      <div class="outeer" @click.capture="outer">
+        <div class="middle" @click="middle">
+          <button @click="inner">
+            .capture会从外到内按顺序捕获事件，并按顺序执行它们😘
+          </button>
+        </div>
+      </div>
+      <p>{{ message }}</p>
+      <hr />
+      <div class="outeer" @click.self="outer">
+        <div class="middle" @click.self="middle">
+          <button @click.self="inner">
+            .self,只会在自己范围内触发事件，不包括子元素😘
+          </button>
+        </div>
+      </div>
+      <p>{{ message }}</p>
+      <hr />
+      <button @click.once="example">i am once</button>
+    </div>
+  </body>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          message: "测试冒泡事件"
+        };
+      },
+      methods: {
+        inner() {
+          this.message = "inner： 这是最里面的Button";
+          console.log("inner： 这是最里面的Button");
+        },
+        middle() {
+          this.message = "middle: 这是中间的Div";
+          console.log("middle: 这是中间的Div");
+        },
+        outer() {
+          this.message = "outer: 这是外面的Div";
+          console.log("outer: 这是外面的Div");
+        },
+        example() {
+          console.log("i am once");
+        }
+      }
+    });
+  </script>
+</html>
