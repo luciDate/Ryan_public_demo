@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .active {
+        background-color: gold;
+      }
+      .error {
+        background-color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <div :style="{border:border}" :class="{active:isActive,error:isError}">
+          <p>Active is gold</p>
+          <p>error is brown</p>
+          <p><button @click="handleActive">isActive?</button></p>
+          <p><button @click="handleError">isError?</button></p>
+        </div>
+      </div>
+      <hr />
+      <div :class="[classObj,classexample]">
+        计算属性返回更加富有逻辑性的操作Class
+      </div>
+    </div>
+  </body>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          border: "1px solid #f4f5f6",
+          isActive: false,
+          isError: false,
+          isOk: true,
+          isNope: null
+        };
+      },
+      methods: {
+        handleActive() {
+          this.isActive = !this.isActive;
+        },
+        handleError() {
+          this.isError = !this.isError;
+        }
+      },
+      computed: {
+        classObj() {
+          return {
+            isOk: this.isOk && !this.isNope,
+            isNope: !this.isNope && true
+          };
+        },
+        classexample() {
+          return {
+            isexam: true
+          };
+        }
+      }
+    });
+  </script>
+</html>
