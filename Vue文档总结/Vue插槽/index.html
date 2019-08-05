@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 普通插槽 -->
+      <example>dahl</example>
+      <!-- 默认值插槽 -->
+      <hr />
+      <default-slot>i am a handsome boy</default-slot>
+      <!-- 具名插槽,用于父元素内插入多个插槽 -->
+      <hr />
+      <basic-layout>
+        <template v-slot:header>
+          <h1>i am header !</h1>
+        </template>
+        <template v-slot:main>
+          <h2>i am main !</h2>
+        </template>
+        <template v-slot:footer>
+          <h3>i am footer !</h3>
+        </template>
+      </basic-layout>
+      <!-- 作用域插槽，用于父组件调用子组件数据 -->
+      <hr />
+      <current-user>
+        <template v-slot:default="slotProps">
+          {{ slotProps.user.firstName }}
+        </template>
+      </current-user>
+      <hr />
+      <!-- 设计一个可以复用的插槽 -->
+      <todo-list>
+        <template v-slot:todo="{todo}">
+          <span v-if="todo.isComplete">✓</span>
+          {{ todo.text }}
+        </template>
+      </todo-list>
+    </div>
+  </body>
+  <script>
+    Vue.component("example", {
+      template: `<span><slot></slot> is so cool</span>`
+    });
+    Vue.component("default-slot", {
+      template: `<span><slot>i am so cool and handsome</slot></span>`
+    });
+    Vue.component("basic-layout", {
+      template: `
+      <div class="basic-layout">
+      <header><slot name="header"></slot></header>
+      <main><slot name="main"></slot></main>
+      <footer><slot name="footer"><h3>i am footer</h3></slot></footer>
+      </div>
+      `
+    });
+    Vue.component("current-user", {
+      template: `
+      <span>
+        <slot :user="user">{{user.lastName}}</slot>
+      </span>
+      `,
+      data() {
+        return {
+          user: {
+            firstName: "ryan",
+            lastName: "dahl"
+          }
+        };
+      }
+    });
+    Vue.component("todo-list", {
+      template: `
+      <ul>
+        <li v-for="todo in filteredTodos" :key="todo.id">
+          <slot name="todo" :todo="todo">
+          {{todo.text}}
+          </slot>
+        </li>
+      </ul>
+      `,
+      data() {
+        return {
+          filteredTodos: [
+            { id: 1, text: "handsome ryan", isComplete: true },
+            { id: 2, text: "handsome dahl", isComplete: false },
+            { id: 3, text: "handsome myself", isComplete: true },
+            { id: 4, text: "handsome me", isComplete: false }
+          ]
+        };
+      }
+    });
+    let app = new Vue({
+      el: "#app"
+    });
+  </script>
+</html>
