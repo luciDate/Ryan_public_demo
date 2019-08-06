@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-model专门用于表单事件，并且会自动绑定事件与值 -->
+      <!-- sync传多个值的props对象 -->
+      <example v-bind.sync="doc"></example>
+      <p>{{ doc.content }}</p>
+      <hr />
+      <!-- 改变v-model默认绑定值 -->
+      <base-checkbox v-model="lovingVue"></base-checkbox>
+      <!-- 设计一个在组件上使用的v-model -->
+      <hr />
+      <custom-input v-model="message"></custom-input>
+      <p>{{ message }}</p>
+    </div>
+  </body>
+  <script>
+    Vue.component("custom-input", {
+      template: `
+      <div>
+      <input v-bind:value="value" v-on:input="$emit('input',$event.target.value)" />
+      </div>
+      `,
+      props: {
+        value: String
+      }
+    });
+    Vue.component("base-checkbox", {
+      template: `
+      <div>
+      <input type="checkbox" v-bind:checked = "checked" v-on:change="$emit('change', $event.target.checked)">
+      </div>
+      `,
+      props: {
+        checked: Boolean
+      },
+      model: {
+        prop: "checked",
+        //修改v-model下的默认事件绑定，一般oninput
+        event: "change"
+      }
+    });
+    Vue.component("example", {
+      template: `
+      <div>
+        <input :value="content" @input="handleContent($event)" />
+      </div>
+      `,
+      props: {
+        title: String,
+        content: String
+      },
+      methods: {
+        handleContent(el) {
+          this.$emit("update:content", el.target.value);
+        }
+      }
+    });
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          doc: {
+            title: "i play hard",
+            content: "i am a handsome boy"
+          },
+          lovingVue: false,
+          message: "insert your name"
+        };
+      },
+      watch: {
+        lovingVue: function(value) {
+          console.log(value);
+        }
+      }
+    });
+  </script>
+</html>
