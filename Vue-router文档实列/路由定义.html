@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Hello Vue</h1>
+      <p>
+        <!-- 渲染A链接导航 -->
+        <router-link to="/foo">Go to foo</router-link>
+        <router-link to="/bar">Go to bar</router-link>
+        <router-link to="/user/11">Go to id-11</router-link>
+        <router-link to="/user/13">Go to id-13</router-link>
+        <router-link to="/user-admin">GO to user-admin</router-link>
+        <router-link to="/non-existing">GO to non-existing</router-link>
+      </p>
+      <!-- 渲染匹配成功的组件 -->
+      <router-view></router-view>
+      <hr />
+    </div>
+  </body>
+  <script>
+    const Foo = { template: "<div>foo</div>" };
+    const Bar = { template: "<div>bar</div>" };
+    const Notfind = { template: "<div>404 {{$route.params.pathMatch}}</div>" };
+    const User = {
+      template: "<div>User id = {{ $route.params.id }}</div>",
+      //提醒一下，当使用路由参数时，例如从 /user/foo 导航到 /user/bar，原来的组件实例会被复用。
+      //因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。不过，这也意味着组件的生命周期钩子不会再被调用。
+      // 复用组件时，想对路由参数的变化作出响应的话，你可以简单地 watch (监测变化) $route 对象：
+      //或者使用 2.2 中引入的 beforeRouteUpdate 导航守卫：
+      beforeRouteUpdate(to, from, next) {
+        next();
+      }
+    };
+    const userAdmin = {
+      // pathMatch返回*号符匹配到的内容
+      template: "<div>{{$route.params.pathMatch}}</div>"
+    };
+    const router = new VueRouter({
+      routes: [
+        { path: "/foo", component: Foo },
+        { path: "/bar", component: Bar },
+        { path: "/user/:id", component: User },
+        //*代表正确匹配到之外的路由，一般用于404
+        { path: "*", component: Notfind },
+        { path: "/user-*", component: userAdmin }
+      ]
+    });
+    const app = new Vue({
+      router
+    }).$mount("#app");
+  </script>
+</html>
