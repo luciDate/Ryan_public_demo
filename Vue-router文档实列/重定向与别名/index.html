@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <div id="app"><router-view></router-view></div>
+  </body>
+  <script>
+    const Cc = { template: `<div>i am Cc</div>` };
+    const router = new VueRouter({
+      routes: [
+        { path: "/a", redirect: "/b" },
+        { path: "/bb/:id", name: "bb" },
+        //重定向的目标也可以是一个命名的路由：
+        { path: "/aa", redirect: { name: "bb", params: { id: 3 } } },
+        // /a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。
+        { path: "/c", component: Cc, alias: "/d" }
+      ]
+    });
+    const app = new Vue({
+      router
+    }).$mount("#app");
+  </script>
+</html>
