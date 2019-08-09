@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <router-view></router-view>
+      <router-view name="sidebar"></router-view>
+    </div>
+  </body>
+  <script>
+    const SearchUser = { props: ["query"], template: `<div>{{query}}</div>` };
+    const Promotion = {
+      props: ["newsletter"],
+      template: `<div>{{newsletter}}</div>`
+    };
+    const User = {
+      props: ["id"],
+      template: `<div>User {{id}}</div>`
+    };
+    const Sidebar = { template: `<div>i am Sidebar</div>` };
+    const router = new VueRouter({
+      model: history,
+      routes: [
+        { path: "user/:id", component: User, props: true },
+        {
+          path: "/user/:id",
+          components: { default: User, sidebar: Sidebar },
+          //如果 props 被设置为 true，route.params 将会被设置为组件属性。
+          props: { default: true, sidebar: false }
+        },
+        {
+          path: "/promotion/from-newsletter",
+          component: Promotion,
+          // 如果 props 是一个对象，它会被按原样设置为组件属性。当 props 是静态的时候有用。
+          props: { newsletter: false }
+        },
+        {
+          path: "/search",
+          component: SearchUser,
+          //你可以创建一个函数返回 props。这样你便可以将参数转换成另一种类型，将静态值与基于路由的值结合等等
+          //URL /search?q=vue 会将 {query: 'vue'} 作为属性传递给 SearchUser 组件。
+          props: route => ({ query: route.query.q })
+        }
+      ]
+    });
+    const app = new Vue({
+      router
+    }).$mount("#app");
+  </script>
+</html>
