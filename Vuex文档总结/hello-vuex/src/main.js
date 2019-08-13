@@ -3,18 +3,34 @@ import Vuex from "vuex";
 import App from "./App.vue";
 Vue.use(Vuex);
 
+// Action 类似于 mutation，不同在于：
+
+// Action 提交的是 mutation，而不是直接变更状态。
+// Action 可以包含任意异步操作。
+//比如你要向服务器提交订单的时候需要用到Action
+
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 10
   },
   mutations: {
-    //mutations事件注册
     increment(state) {
       state.count++;
     },
-    //mutations传参
-    incrementBy(state, payload) {
-      state.count += payload.amount;
+    decrement(state, payload) {
+      state.count -= payload.amount;
+    }
+  },
+  actions: {
+    incrementAsync({ commit }) {
+      setTimeout(() => {
+        commit("increment");
+      }, 1000);
+    },
+    decrementAsync({ commit }, payload) {
+      setTimeout(() => {
+        commit("decrement", payload);
+      }, 1000);
     }
   }
 });
@@ -28,16 +44,3 @@ new Vue({
   },
   render: h => h(App)
 }).$mount("#app");
-
-//store.commit("increment");
-//store.commit("incrementBy", { amount: 9 });
-
-// store.commit({
-//   type: "incrementBy",
-//   amount: 29
-// });
-
-//Vue.set(store.state, "new prop", 123);
-
-//console.log(store.state);
-//console.log(store.state.count);
