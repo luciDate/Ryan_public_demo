@@ -5,22 +5,16 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    todos: [
-      { id: 1, text: "...", done: true },
-      { id: 2, text: "...", done: false }
-    ]
+    count: 0
   },
-  getters: {
-    doneTodos: state => {
-      return state.todos.filter(todo => todo.done);
+  mutations: {
+    //mutations事件注册
+    increment(state) {
+      state.count++;
     },
-    //getters调用自身函数
-    doneTodosCount: (state, getters) => {
-      return getters.doneTodos.length;
-    },
-    //getters传参
-    getTodoById: state => id => {
-      return state.todos.find(todo => todo.id === id);
+    //mutations传参
+    incrementBy(state, payload) {
+      state.count += payload.amount;
     }
   }
 });
@@ -35,4 +29,15 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-//console.log(store.getters.getTodoById(2));
+//store.commit("increment");
+//store.commit("incrementBy", { amount: 9 });
+
+// store.commit({
+//   type: "incrementBy",
+//   amount: 29
+// });
+
+//Vue.set(store.state, "new prop", 123);
+
+//console.log(store.state);
+//console.log(store.state.count);

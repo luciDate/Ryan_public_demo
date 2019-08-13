@@ -1,26 +1,22 @@
 <template>
   <div class="basic">
     <h1>Hello Vue</h1>
-    <h2>{{doneTodos}}</h2>
-    <h3>{{doneTodosCount}}</h3>
-    <h4>{{getTodoById(2)}}</h4>
+    <h2>{{count}}</h2>
+    <hr />
+    <button v-on:click="increment">Change Store State</button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
   data() {
     return {
       message: "小明"
     };
   },
-  computed: mapGetters([
-    // 映射 this.count 为 store.state.count
-    "doneTodos",
-    "doneTodosCount",
-    "getTodoById"
-  ])
+  computed: mapState(["count"]),
+  methods: mapMutations(["increment"])
 };
 </script>
 
