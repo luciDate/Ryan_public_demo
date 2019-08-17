@@ -1,32 +1,24 @@
 <template>
   <div class="basic">
     <h1>Hello Vue</h1>
-    <h2>{{count}}</h2>
-    <hr />
-    <button @click="incrementAsync">change + Async</button>
-    <hr />
-    <button @click="decrementAsync">change - decrementAsync</button>
+    <h2>{{a}}</h2>
+    <h2>{{b}}</h2>
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
       message: "小明"
     };
   },
-  computed: mapState(["count"]),
-  methods: {
-    ...mapActions(["incrementAsync"]),
-    decrementAsync() {
-      this.$store.dispatch({
-        type: "decrementAsync",
-        amount: 3
-      });
-    }
-  }
+  computed: mapState({
+    a: state => state.a.count,
+    b: state => state.b.count
+  }),
+  methods: mapActions("some/nested/module", ["foo"])
 };
 </script>
 
