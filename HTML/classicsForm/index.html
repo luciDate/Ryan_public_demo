@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <style>
+    .row {
+      display: block;
+    }
+    form {
+      border: dashed 3px blueviolet;
+      border-radius: 5px;
+      margin: 20px;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: blueviolet;
+    }
+    .row {
+      width: 100%;
+      margin: 10px auto;
+      text-align: center;
+    }
+    input[type="checkbox"] {
+      width: 10px;
+    }
+    input[type="radio"] {
+      width: 15px;
+    }
+    .btnSubmit {
+      border: solid 1px blueviolet;
+      background-color: blueviolet;
+      border-radius: 5px;
+      padding: 5px 20px;
+      color: white;
+      margin: 0 auto;
+      display: block;
+      font-size: 18px;
+    }
+    input[type="text"] {
+      width: 200px;
+      border: solid 1px blueviolet;
+      border-radius: 5px;
+      line-height: 30px;
+    }
+    textarea {
+      height: 100px;
+      width: 200px;
+      border: solid 1px blueviolet;
+      border-radius: 5px;
+    }
+    select {
+      width: 200px;
+      border: solid 1px blueviolet;
+      border-radius: 5px;
+      line-height: 30px;
+      height: 30px;
+    }
+  </style>
+  <body>
+    <form action="">
+      <h1>意见反馈</h1>
+      <div class="row">
+        <label for="">姓 名:</label>
+        <input type="text" />
+      </div>
+      <div class="row">
+        <label class="">选择您的性别:</label>
+        <input type="radio" value="男" >男</input>
+        <input type="radio" value="女" >女</input>
+      </div>
+      <div class="row">
+        <label for="">选择你的爱好:</label>
+        <input type="checkbox"  >看书</input>
+        <input type="checkbox"  >跳舞</input>
+        <input type="checkbox"  >唱RAP</input>
+
+      </div>
+      <div class="row">
+        <label for="">学历程度:</label>
+        <select name="" id="">
+          <option value="">小学</option>
+          <option value="">高中</option>
+          <option value="">大专以上</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="">反馈意见:</label>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+      </div>
+      <input type="submit" class="btnSubmit" value="提交" />
+    </form>
+  </body>
+</html>
