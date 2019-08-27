@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .container {
+        width: 1210px;
+        background-color: #e5e5e5;
+        margin: 0 auto;
+        padding: 10px 10px;
+      }
+      .header {
+        margin-bottom: 5px;
+        text-align: center;
+      }
+      .nav {
+        margin-bottom: 5px;
+        text-align: center;
+      }
+      .main {
+        text-align: center;
+      }
+      .article {
+        width: 500px;
+        border: 1px solid #ffff;
+        height: 200px;
+      }
+      .clear-f:before,
+      .clear-f:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .fl {
+        float: left;
+      }
+      .fr {
+        float: right;
+      }
+      .aside {
+        width: 500px;
+        border: 1px solid #ffff;
+        height: 200px;
+      }
+      .footer {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">i am header</div>
+    </header>
+    <nav class="nav">
+      <div class="container">i am nav</div>
+    </nav>
+    <main class="main">
+      <div class="container clear-f">
+        i am main
+        <article class="article fl">
+          i am article
+          <section class="section">
+            iam section
+          </section>
+        </article>
+        <aside class="aside fr">i am aside</aside>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        i am footer
+      </div>
+    </footer>
+  </body>
+</html>
