@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 1、下面我们就用递归来实现求1—100内的数字之和。
+    function add(n) {
+      if (n === 1) {
+        return 1;
+      }
+      return (n += add(n - 1));
+    }
+    let result = add(100);
+    console.log(result);
+    // 例2：求n的阶乘。
+
+    // 案例分析：
+
+    // 什么是阶乘？如：5的阶乘=5*4*3*2*1
+
+    // 找规律：如5的阶乘可以改写成:5乘以4的阶乘，4可以改写成3的阶乘，也就是n乘以(n-1)
+    function auto(n) {
+      if (n === 1) {
+        return 1;
+      }
+      return n * auto(n - 1);
+    }
+    let resolve = auto(5);
+    console.log(resolve);
+  </script>
+</html>
