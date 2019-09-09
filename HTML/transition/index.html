@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+        /* transition-timing-function: ease-in-out; */
+        /* transition效果回弹 */
+        /* transition-timing-function: cubic-bezier(0.465, -0.46, 0.525, 1.435); */
+        /* transition延时 */
+        -webkit-transition-delay: 1s;
+        -moz-transition-delay: 1s;
+        transition-delay: 1s;
+        -webkit-transition: all 2s;
+        -moz-transition: all 2s;
+        transition: all 2s;
+      }
+      .container:hover {
+        width: 600px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+  </body>
+</html>

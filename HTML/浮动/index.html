@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 700px;
+        height: 400px;
+        background-color: gainsboro;
+      }
+      .boxI,
+      .boxII {
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+      }
+      .boxI {
+        float: left;
+      }
+      .boxII {
+        float: right;
+      }
+      .clear-f :after,
+      .clear-f :before {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container clear-f">
+      <div class="boxI">
+        浮动的Box可以向左向右移动，直到它碰到另一个BOX，或者最大宽度边缘,浮动的元素会脱离普通文档流
+      </div>
+      <div class="boxII"></div>
+    </div>
+  </body>
+</html>

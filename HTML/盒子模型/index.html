@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .boxI,
+      .boxII {
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgb(163, 21, 21);
+        margin-bottom: 10px;
+      }
+      .boxI {
+        padding-left: 50px;
+        margin-top: 10px;
+      }
+      .boxII {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box; /*可以改变元素以使其宽度包含填充*/
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="boxI">普通盒子模型的宽高等于外边距+盒子自身宽高+内边距</div>
+    <div class="boxII">XXX</div>
+  </body>
+</html>
