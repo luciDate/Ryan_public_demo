@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="https://www.baidu.com" id="cache">233</a>
+  </body>
+  <script>
+    // href = href + "?" + Math.random() //抛出一个0~1以内的浮点数,大于等于0，小于1
+    document.getElementById("cache").href += "?" + Math.random();
+
+    function watchRandom(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+    // random() * 5  - 1 返回0~5的随机浮点数 再让它加上最小值1，实现返回1~5以内的随机数
+    console.log(watchRandom(1, 5));
+  </script>
+</html>

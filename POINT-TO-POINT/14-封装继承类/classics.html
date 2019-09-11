@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="example">233</p>
+  </body>
+  <script>
+    function Elem(id) {
+      this.elem = document.getElementById(id);
+    }
+    Elem.prototype.html = function(val) {
+      var elem = this.elem;
+      if (val) {
+        elem.innerHTML = val;
+        return this;
+      } else {
+        return elem.innerHTML;
+      }
+    };
+    Elem.prototype.on = function(type, fn) {
+      var elem = this.elem;
+      elem.addEventListener(type, fn);
+      return this;
+    };
+    var div1 = new Elem("example");
+    // 因为有return this 的存在所以可以返回Elem类进行链式操作
+    div1.html("Hello,world").on("click", function() {
+      console.log("log");
+    });
+  </script>
+</html>

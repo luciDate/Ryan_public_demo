@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var i, a; // i 会在a === 10 停止循环，此时的a是10
+    for (i = 0; i < 10; i++) {
+      a = document.createElement("a");
+      a.innerHTML = i + "<br>";
+      a.addEventListener("click", function(e) {
+        e.preventDefault();
+        alert(i); //自由变量会向上寻找变量，这时候的全局变量a已经是10了
+      });
+    }
+    document.body.appendChild(a);
+  </script>
+</html>

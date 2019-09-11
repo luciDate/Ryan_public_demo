@@ -1,0 +1,9 @@
+Object;
+Array;
+Boolean;
+Number;
+String;
+Function;
+Date;
+RegExp;
+Error;
