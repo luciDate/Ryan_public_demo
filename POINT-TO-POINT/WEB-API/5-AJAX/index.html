@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>
+      xhr.readyStatus的状态码为0（初始化），1（载入），2（载入完成），3（交互），4（完成）
+    </h3>
+    <h3>
+      xhr.status的状态码为200（成功处理），300（需要重定向），400（客户端请求错误），500（服务端错误）
+    </h3>
+  </body>
+  <script>
+    let xhr = new XMLHttpRequest();
+    //true 异步
+    //false 同步
+    xhr.open("GET", "http://jsonplaceholder.typicode.com/posts/1", true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          console.log(xhr.responseText);
+        }
+      }
+    };
+    xhr.send(null);
+  </script>
+</html>

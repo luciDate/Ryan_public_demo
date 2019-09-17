@@ -25,3 +25,14 @@ f = 1;
 console.log(e, f);
 
 var f;
+
+//函数声明式会上下文提升
+log();
+function log() {
+  console.log("log");
+}
+//函数表达式不会
+logMe();
+var logMe = function() {
+  console.log("log name");
+};

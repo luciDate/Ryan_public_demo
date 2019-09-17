@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <button class="btn1">嘻嘻</button>
+    </div>
+    <!-- 事件冒泡机制，如果子元素事件发生，会冒泡至父元素的事件连锁发生 -->
+    <div class="containerI">
+      <div class="div1">
+        <li id="p1">激活</li>
+        <li id="p2">取消</li>
+        <li id="p3">取消</li>
+        <li id="p4">取消</li>
+      </div>
+      <div class="div2">
+        <li id="p5">取消</li>
+        <li id="p6">取消</li>
+      </div>
+    </div>
+    <div class="containerII">
+      <li><a href="">1</a></li>
+      <li><a href="">2</a></li>
+      <li><a href="">3</a></li>
+      <li><a href="">4</a></li>
+    </div>
+  </body>
+  <script>
+    let btn1 = document.querySelector(".btn1");
+    btn1.addEventListener("click", function(e) {
+      e.preventDefault();
+      console.log("clicked");
+    });
+    let p1 = document.querySelector("#p1");
+    p1.addEventListener("click", function(e) {
+      e.stopPropagation();
+      alert("激活");
+    });
+    let container = document.querySelector(".containerI");
+    console.log(container);
+    container.addEventListener("click", function(e) {
+      alert("取消");
+    });
+    let containerII = document.querySelector(".containerII");
+    containerII.addEventListener("click", function(e) {
+      e.preventDefault();
+      alert(e.target.innerHTML);
+    });
+  </script>
+</html>

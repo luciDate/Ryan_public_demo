@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>跨域条件，协议，域名，端口，有一个不同就算作跨域</h3>
+  </body>
+  <script>
+    // JSONP的实践原理
+    window.callback = function(data) {
+      console.log(data);
+    };
+  </script>
+  <script src="http://coding.m.api.com/api.js"></script>
+  <!-- js文件内容为 callback({x:100,y:200}) -->
+</html>

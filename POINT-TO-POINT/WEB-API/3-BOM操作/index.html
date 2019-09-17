@@ -1,0 +1,30 @@
+<!-- BOM 指的就是浏览器对象模型 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">666</div>
+  </body>
+  <script>
+    const browser = navigator.userAgent;
+    //没找到返回-1
+    if (browser.indexOf("Chrome") !== -1) {
+      console.log("is Chrome");
+    }
+    console.log(screen.width); //当前设备的宽度
+    console.log(screen.height); //当前设备的高度
+
+    console.log(location.href); //获取当前地址
+    //location.href = "https://www.baidu.com"; //改变当前地址
+    console.log(location.protocol); //获取当前协议
+    console.log(location.host); //获取当前域名
+    console.log(location.search); //获取搜索信息
+    console.log(location.pathname); //获取路径
+    console.log(location.hash); //获取哈希值
+  </script>
+</html>

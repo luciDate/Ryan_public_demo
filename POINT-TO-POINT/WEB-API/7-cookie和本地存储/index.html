@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>
+      Cookie 本身用于客户端与服务端的通信，但是他有本地储存功能所以它被用来借用
+    </h3>
+    <h3>
+      localStorege HTML5专门设计，最大容量5M，API易用
+    </h3>
+  </body>
+  <script>
+    localStorage.setItem("name", "dahl");
+    console.log(localStorage.getItem("name"));
+
+    const arr = [];
+    arr["name"] = "dahl";
+    arr.push("xixi");
+    console.log(arr);
+  </script>
+</html>

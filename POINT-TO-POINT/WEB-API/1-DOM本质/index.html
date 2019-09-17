@@ -1,0 +1,38 @@
+<!-- DOM就是将HTML进行树形结构化，让浏览器可识别，让JS可识别，可操作 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="contaier">
+      <header></header>
+      <main>
+        <p>233</p>
+        <p class="example" data-name="dahl"></p>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+  <script>
+    // html结构也可以作为一个对象让JS识别，扩展property操作
+    // 比如 标签p就等于 let p = {className:example}
+    let pList = document.querySelectorAll("p");
+    let p = pList[0];
+    console.log(p.style.width);
+    p.style.width = "100px";
+    console.log(p.className);
+    p.className = "p1";
+    console.log(p.nodeName);
+    console.log(p.nodeType); //节点属性返回1
+
+    //也可以进行标签已有属性进行识别和操作
+    let pI = document.querySelector(".example");
+    console.log(pI.getAttribute("data-name"));
+    pI.setAttribute("data-name", "ryan");
+    console.log(pI.getAttribute("data-name"));
+  </script>
+</html>

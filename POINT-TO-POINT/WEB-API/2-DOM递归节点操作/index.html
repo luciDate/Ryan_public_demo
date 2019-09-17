@@ -1,0 +1,37 @@
+<!-- 递归节点操作
+比如一个子节点上面有个父节点，父节点有个父节点，整个自身的递归直到找到指定元素，结束递归 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p2">666</p>
+    <p id="p3">6666</p>
+    <div id="div1"></div>
+  </body>
+  <script>
+    //新增节点
+    const div1 = document.getElementById("div1");
+    const p1 = document.createElement("p");
+    p1.innerHTML = "233";
+    div1.appendChild(p1);
+    //移动节点
+    const p2 = document.querySelector("#p2");
+    const p3 = document.querySelector("#p3");
+    div1.appendChild(p2);
+    div1.appendChild(p3);
+    //获取父级节点
+    console.log(p2.parentNode);
+    //获取子级节点
+    console.log(div1.childNodes);
+    //获取兄弟节点
+    console.log(p1.nextSibling);
+    console.log(p2.previousSibling);
+    const childs = div1.childNodes[0];
+    div1.removeChild(childs);
+  </script>
+</html>
