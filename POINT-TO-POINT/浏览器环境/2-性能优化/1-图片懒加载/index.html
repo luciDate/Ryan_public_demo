@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      img {
+        width: 100%;
+        max-width: 300px;
+        height: 150px;
+        margin-bottom: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="img-warpper">
+      <img
+        class="lazyload"
+        src="./images/下载.png"
+        alt=""
+        data-original="https://dummyimage.com/300x150/20339e/d5e0e0.png"
+      />
+    </div>
+    <div class="img-warpper">
+      <img
+        class="lazyload"
+        src="./images/下载.png"
+        alt=""
+        data-original="https://dummyimage.com/300x150/20339e/d5e0e0.png"
+      />
+    </div>
+    <div class="img-warpper">
+      <img
+        class="lazyload"
+        src="./images/下载.png"
+        alt=""
+        data-original="https://dummyimage.com/300x150/20339e/d5e0e0.png"
+      />
+    </div>
+    <div class="img-warpper">
+      <img
+        class="lazyload"
+        src="./images/下载.png"
+        alt=""
+        data-original="https://dummyimage.com/300x150/20339e/d5e0e0.png"
+      />
+    </div>
+  </body>
+  <script>
+    class LazyLoad {
+      constructor(el) {
+        //Array.from()方法就是将一个类数组对象或者可遍历对象转换成一个真正的数组。
+        this.imgList = Array.from(document.querySelectorAll(el));
+        this.init();
+      }
+      canLoad() {
+        let imgList = this.imgList;
+        console.log(imgList);
+        for (let i = imgList.length; i--; ) {
+          this.getBound(imgList[i]) && this.loadImage(imgList[i], i);
+        }
+      }
+      getBound(el) {
+        let bound = el.getBoundingClientRect();
+        let clientHeight = window.innerHeight;
+        // 图片距离顶部的距离
+        return bound.top <= clientHeight - 30;
+      }
+      loadImage(el, index) {
+        let src = el.getAttribute("data-original");
+        el.src = src;
+        this.imgList.splice(index, 1);
+      }
+      bindEvent() {
+        window.addEventListener("scroll", () => {
+          this.imgList.length && this.canLoad();
+        });
+      }
+      init() {
+        this.canLoad();
+        this.bindEvent();
+      }
+    }
+    const lazy = new LazyLoad(".lazyload");
+  </script>
+</html>

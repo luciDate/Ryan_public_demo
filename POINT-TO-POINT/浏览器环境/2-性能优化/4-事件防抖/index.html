@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="text" type="text" />
+    <input type="button" value="嘻嘻" />
+  </body>
+  <script>
+    let input = document.getElementById("text");
+    let timeoutId = null;
+    input.addEventListener("keyup", () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        console.log("233");
+      }, 300);
+    });
+  </script>
+</html>
