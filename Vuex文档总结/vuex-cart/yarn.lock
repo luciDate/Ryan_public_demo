@@ -3052,7 +3052,7 @@ eslint-scope@^4.0.0, eslint-scope@^4.0.3:
 
 eslint-utils@1.4.1:
   version "1.4.1"
-  resolved "https://registry.npm.taobao.org/eslint-utils/download/eslint-utils-1.4.1.tgz?cache=0&sync_timestamp=1566297013046&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-utils%2Fdownload%2Feslint-utils-1.4.1.tgz#73f99ce55beebe4d956bfe51cb087bab2399fd9e"
+  resolved "https://registry.npm.taobao.org/eslint-utils/download/eslint-utils-1.4.1.tgz#73f99ce55beebe4d956bfe51cb087bab2399fd9e"
   integrity sha1-c/mc5Vvuvk2Va/5Rywh7qyOZ/Z4=
   dependencies:
     eslint-visitor-keys "^1.0.0"
