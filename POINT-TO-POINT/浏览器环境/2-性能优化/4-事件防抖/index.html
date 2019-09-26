@@ -11,13 +11,20 @@
     <input type="button" value="嘻嘻" />
   </body>
   <script>
-    let input = document.getElementById("text");
-    let timeoutId = null;
-    input.addEventListener("keyup", () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        console.log("233");
-      }, 300);
-    });
+    let example = function() {
+      let input = document.getElementById("text");
+      let run = true;
+      input.addEventListener("keyup", () => {
+        return (function() {
+          if (!run) return;
+          run = false;
+          setTimeout(() => {
+            console.log("233");
+            run = true;
+          }, 500);
+        })();
+      });
+    };
+    example();
   </script>
 </html>
