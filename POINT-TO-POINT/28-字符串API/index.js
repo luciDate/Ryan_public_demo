@@ -11,7 +11,8 @@ console.log(
 );
 console.log(str.slice(1)); //规定从何处开始选取
 console.log(str.slice(-1)); //倒序选取
-console.log(str.split("").slice(1, 4)); //从下标1开始，第四个结束
+console.log(str.split("").slice(1, 4)); //从第一个1开始，第四个结束
+console.log(str.substr(3)); //字符串截取
 
 let strI = " dahl ";
 console.log(strI.trim());
