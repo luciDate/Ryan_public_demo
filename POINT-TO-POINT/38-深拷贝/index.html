@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>233</h3>
+  </body>
+  <script>
+    let obj = { a: 1, arr: [2, 3] };
+    let objI = obj.arr;
+    console.log(objI);
+    objI.push(4);
+    console.log(objI);
+    console.log(obj);
+    //简单的等于浅拷贝一个复杂的数据类型时，如数组和对象时，他们内存地址是样的所以objI的变化会影响obj
+
+    //fix that
+    let x = { a: 1, arr: [1, 2, 3] };
+    let xx = JSON.parse(JSON.stringify(x));
+    console.log(xx);
+    xx.arr.push(4);
+    console.log(xx);
+    console.log(x);
+    //fix that
+    let z = [{ a: 1, b: 2 }, { c: [3, 4] }];
+    let zz = JSON.parse(JSON.stringify(z));
+    zz[1].c.push(5);
+    console.log(zz);
+    console.log(z);
+  </script>
+</html>

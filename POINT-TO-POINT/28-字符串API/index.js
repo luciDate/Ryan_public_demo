@@ -20,3 +20,9 @@ console.log(strI.trim());
 let num = 123;
 
 console.log(`num is ${num}`);
+
+const NAMES = ["xiaoming", "xiaohong", "xiaobai"];
+
+let strIII = `<ul>${NAMES.map(name => `<li>i am ${name}</li>`)}</ul>`;
+
+console.log(strIII);
