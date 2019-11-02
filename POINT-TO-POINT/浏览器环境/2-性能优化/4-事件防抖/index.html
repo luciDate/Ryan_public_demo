@@ -15,14 +15,12 @@
       let input = document.getElementById("text");
       let run = true;
       input.addEventListener("keyup", () => {
-        return (function() {
-          if (!run) return;
-          run = false;
-          setTimeout(() => {
-            console.log("233");
-            run = true;
-          }, 500);
-        })();
+        if (!run) return;
+        run = false;
+        setTimeout(() => {
+          console.log("233");
+          run = true;
+        }, 900);
       });
     };
     example();
