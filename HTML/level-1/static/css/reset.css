@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*dom不受padding距离影响,也不受border的宽高影响*/
+}
+body {
+  font-size: 14px;
+  font-family: "PingFang SC", "Microsoft Yahei", monospace;
+  -webkit-font-smoothing: antialiased;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+a {
+  display: block;
+  text-decoration: none;
+}
+img {
+  border: none;
+  display: block;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clear-float::after,
+.clear-float::before {
+  content: "";
+  display: block;
+  clear: both;
+}
